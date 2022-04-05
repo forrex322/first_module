@@ -5,19 +5,16 @@ class itr:
 
     def __init__(self, l):
         self.l = l
-        self.length = len(self.l)
+        self.index = len(self.l)
 
     def __iter__(self):
         return self
 
     def __next__(self):
-        self.s = self.length
-        new_list = [None] * self.length
-
-        for item in self.l:
-            self.s = self.s - 1
-            new_list[self.s] = item
-        return new_list
+        if self.index == 0:
+            raise StopIteration
+        self.index -= 1
+        return self.l[self.index]
 
 
 def reverse_list(l):
@@ -29,7 +26,7 @@ l = [1, 2, 3, 4, 5]
 
 print('Iterator class')
 i = itr(l)
-print(list(islice(i, 0, 1)))
+print(list(islice(i, 0, 5)))
 
 print('##################')
 
