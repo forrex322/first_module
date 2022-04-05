@@ -9,10 +9,10 @@ class Polygon:
         self.z = z
 
     def perimeter(self):
-        pass
+        raise NotImplementedError("Error")
 
     def area(self):
-        pass
+        raise NotImplementedError("Error")
 
 
 class Triangle(Polygon):
