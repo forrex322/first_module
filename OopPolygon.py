@@ -24,13 +24,23 @@ class Triangle(Polygon):
         p = (self.x + self.y + self.z) / 2
         return math.sqrt(p * (p - self.x) * (p - self.y) * (p - self.z))
 
-    def type_of_triangle(self):
-        if self.x == self.y == self.z:
-            return print('Triangle is equilateral')
+    # def type_of_triangle(self):
+    #     if self.x == self.y == self.z:
+    #         return print('Triangle is equilateral')
+    #
+    #     if self.z ** 2 == self.x ** 2 + self.y ** 2:
+    #         return print('Triangle is rectangular')
+    #     return 1
 
+    def is_rectangular(self):
         if self.z ** 2 == self.x ** 2 + self.y ** 2:
-            return print('Triangle is rectangular')
-        return 1
+            return True
+        return False
+
+    def is_equilateral(self):
+        if self.x == self.y == self.z:
+            return True
+        return False
 
 
 class Rectangle(Polygon):
@@ -44,8 +54,10 @@ class Rectangle(Polygon):
     def whether_rectangle_is_a_square(self):
         if self.x == self.y:
             print('Given rectangle is a square')
+            return True
         else:
             print('Give rectangle is not a square')
+            return False
 
 
 class Circle(Polygon):
@@ -61,7 +73,8 @@ print('Triangle')
 a = Triangle(3, 4, 5)
 print(a.area())
 print(a.perimeter())
-print(a.type_of_triangle())
+print(a.is_rectangular())
+print(a.is_equilateral())
 
 print('\nRectangle')
 b = Rectangle(2, 4)

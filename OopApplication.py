@@ -17,7 +17,7 @@ class Application(ABC, JSONSerializable):
 
     def __init__(self, name, release_date, version):
         self.name = name
-        self.release_date = release_date
+        self.release_date = datetime.strptime(release_date, "%Y-%m-%d")
         self.version = version
 
     def __str__(self):
@@ -35,8 +35,6 @@ class AndroidApplication(Application, JSONSerializable):
 
     def __eq__(self, other):
         print(f'Compare by year and version\n{self.name} = {other.name}')
-        self.release_date = datetime.strptime(self.release_date, "%Y-%m-%d")
-        other.release_date = datetime.strptime(other.release_date, "%Y-%m-%d")
         return (self.release_date.year == other.release_date.year) & (self.version == other.version)
 
     def __gt__(self, other):
@@ -122,7 +120,7 @@ b = AndroidApplication('Clash of Clans', '2008-8-15', 2.0)
 # print(b.get_absolute_url())
 #
 # print(a == b)
-# print(a > b)
+print(a > b)
 # print(a < b)
 #
 # # print(a.list_of_compatible_versions)
